@@ -1,0 +1,20 @@
+table {
+   width: 100%;
+   border-spacing: 0;
+}
+
+th, td {
+   border: black 1px solid;
+   margin: 0;
+}
+
+th:not(:last-child) {
+   border-right: none;
+}
+
+td input {
+   width: 99%;
+   padding: 0;
+   display: block;
+   margin: 0 auto;
+}
