@@ -18,13 +18,13 @@ function generateRows() {
 }
 
 function reloadRowData() {
-   var data = generateDataSet();
+   var data = generateDataSet("Y-Input");
    updateTable(data);
 }
 
-function generateDataSet() {
+function generateDataSet(className) {
    var dataSet = [];
-   var yColumn = document.getElementsByClassName("Y-Input");
+   var yColumn = document.getElementsByClassName(className);
    for (var i=0; i<yColumn.length; i++) {
       var yInput = yColumn[i];
       var num = parseInt(yInput.value);
@@ -33,6 +33,30 @@ function generateDataSet() {
       }
    }
    return dataSet;
+}
+
+function loadMathFunction() {
+   var mathFunction = document.getElementById("math-function-input").value;
+   var XData = generateDataSet("X-Input");
+   var YData = [];
+
+   for (var i = 0, row; row = table.rows[i]; i++) {
+      if (row.id != "row") { continue }
+      for (var j = 0, col; col = row.cells[j]; j++) {
+         var input = col.childNodes[0];
+         if (j == 0) {
+            var h = mathFunction.split('x').join("(" + (i - 5) + ")");
+            YData.push(math.eval(h));
+            console.log(h);
+            input.value = i - 5;
+         } else if (j == 1) {
+            input.value = YData[i - 1];
+         }
+      }
+   }
+
+   updateTable(YData);
+   console.log(YData);
 }
 
 function updateTable(dataSet) {
@@ -84,6 +108,3 @@ document.getElementById("reset-btn").onclick = function() {
       }
    }
 }
-
-var x = 10;
-console.log(eval("x ^ 2"));
