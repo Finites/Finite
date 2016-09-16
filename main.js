@@ -19,7 +19,6 @@ function generateRows() {
 
 function reloadRowData() {
    var data = generateDataSet();
-   console.log("After: " + data);
    updateTable(data);
 }
 
@@ -28,7 +27,10 @@ function generateDataSet() {
    var yColumn = document.getElementsByClassName("Y-Input");
    for (var i=0; i<yColumn.length; i++) {
       var yInput = yColumn[i];
-      dataSet.push(parseInt(yInput.value));
+      var num = parseInt(yInput.value);
+      if (isNaN(num) == false) {
+         dataSet.push(num);
+      }
    }
    return dataSet;
 }
@@ -49,8 +51,7 @@ function updateTable(dataSet) {
 
 function findDiference(exponent, data) {
    var localExponent = 1;
-   var localData = JSON.parse(JSON.stringify(data));
-   console.log(localData);
+   var localData = data;
    while (exponent != localExponent) {
       for (var i=0; i<localData.length;i++) {
          if (i != (localData.length - 1)) {
@@ -65,8 +66,24 @@ function findDiference(exponent, data) {
       }
       localExponent += 1;
    }
-   console.log("Returned " + localData);
    return localData
 }
 
 generateRows();
+
+document.getElementById("reset-btn").onclick = function() {
+   for (var i = 0, row; row = table.rows[i]; i++) {
+      if (row.id != "row") { continue }
+      for (var j = 0, col; col = row.cells[j]; j++) {
+         if (j == 0 || j == 1) {
+            var input = col.childNodes[0];
+            input.value = ""
+         } else {
+            col.innerHTML = ""
+         }
+      }
+   }
+}
+
+var x = 10;
+console.log(eval("x ^ 2"));

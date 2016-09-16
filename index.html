@@ -9,7 +9,11 @@
 	</head>
 	<body>
 		<header>
-			<button>Reset</button>
+			<button id="reset-btn" class="btn">Reset</button>
+			<div id="function-input">
+					<p>f(x) =</p>
+					<input id="function-input" type="text" placeholder="Function" name="function-input"/>
+			</div>
 		</header>
 		<table id="finite-differences">
 		   <tr>
@@ -23,8 +27,8 @@
 		      <th>L6</th>
 		   </tr>
 		   <tr id="row">
-		      <td><input type="text" name="X0"  onchange="reloadRowData()"/></td>
-		      <td><input type="text" class="Y-Input" name="Y0" onchange="reloadRowData()"/></td>
+		      <td><input placeholder="X" type="text" name="X"  onchange="reloadRowData()"/></td>
+		      <td><input placeholder="Y" type="text" class="Y-Input" name="Y" onchange="reloadRowData()"/></td>
 		      <td></td>
 		      <td></td>
 		      <td></td>
@@ -33,6 +37,7 @@
 		      <td></td>
 		   </tr>
 		</table>
+		<script src="math .js"></script>
 		<script src="main.js"></script>
 	</body>
 
