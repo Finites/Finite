@@ -47,7 +47,6 @@ function loadMathFunction() {
          if (j == 0) {
             var h = mathFunction.split('x').join("(" + (i - 5) + ")");
             YData.push(math.eval(h));
-            console.log(h);
             input.value = i - 5;
          } else if (j == 1) {
             input.value = YData[i - 1];
@@ -81,6 +80,7 @@ function findDiference(exponent, data) {
          if (i != (localData.length - 1)) {
             var firstNumber = localData[i];
             var secondNumber = localData[i + 1];
+            if (firstNumber == null || secondNumber == null) { continue }
             var difference = secondNumber - firstNumber;
             localData.splice(i, 1, difference);
          } else {
