@@ -114,3 +114,18 @@ table tr:first-child{
 #function-input input:-moz-placeholder { /* Firefox 18- */
   color: #d9ecfd;
 }
+
+@media screen and (max-width: 495px) {
+   .btn {
+      width: 30%;
+      height: 60%;
+   }
+
+   #function-input input {
+      margin: 0;
+   }
+
+   #function-input {
+      margin-left: 40%;
+   }
+}s
